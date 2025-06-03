@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="./_app/immutable/assets/0.CEkGGdPF.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.Dwb3OHzs.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.LspV04sB.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.DQs54PA3.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.Bssf8uRM.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.BFaUAS3K.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.CU9ha0cX.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.DiJ6plPq.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/toastStore.CGncSzmc.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.C8bNomQ0.js"><title>HEIC to JPG/PNG bulk</title><!-- HEAD_svelte-nf5zyv_START --><!-- HEAD_svelte-nf5zyv_END -->
+		<script src="/prism.js" manual></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body
+		data-sveltekit-preload-data="hover"
+		class="dark:bg-[#181a1b] bg-gray-200 dark:text-stone-50"
+	>
+		<div style="display: contents">   <section class="fixed right-0 top-0 flex flex-col z-[1000] mt-5 mr-10"></section> <div class="flex flex-row min-h-[100vh]"><main class="w-full h-full"><div class="flex flex-col m-8 shadow shadow-stone-300 dark:shadow-zinc-800 bg-white rounded-xl dark:bg-[#1E2021] dark:text-stone-50"><h1 class="text-3xl text-center m-5" data-svelte-h="svelte-1v2supz">HEIC to JPG converter</h1> <h2 class="text-md text-center mb-20" data-svelte-h="svelte-1txfo1b">offline / free / private</h2> <div class="p-10 flex flex-col space-y-5 items-center justify-center"><div class="flex flex-row items-center justify-center"><input type="file" multiple></div> <div class="m-2 flex flex-row space-x-5 justify-around"><p data-svelte-h="svelte-11fikjx">out quality</p> <input type="range" value="70"> <p>70</p></div> <button class="bg-stone-600 p-3" data-svelte-h="svelte-12oak7q">Convert</button></div></div></main> </div> 
+			
+			<script>
+				{
+					__sveltekit_jdwpqw = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/heic-to-jpg"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.Dwb3OHzs.js"),
+						import("./_app/immutable/entry/app.BFaUAS3K.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+	<link rel="stylesheet" href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css" />
+	<script src="https://cdn.jsdelivr.net/npm/heic-to@1.1.12/dist/iife/heic-to.js"></script>
+</html>
