@@ -19,55 +19,42 @@
 	}
 	let quality: number = 70;
 
-	let current = 0;
-	let max = 0;
-
-	async function processFile(zip: any, file: any) {
-		try {
-			console.log(`processing ${file.name}`);
-			const jpeg = await heic({
-				blob: file,
-				type: 'image/jpeg',
-				quality: quality / 100
-			});
-			zip.file(file.name.replaceAll('.heic', '.jpg'), jpeg);
-		} catch (error: any) {
-			console.log(error);
-			console.log(`failed converting ${file.name}: ` + error, true, 1000);
-		}
-	}
-
+	let current = 0
+	let max = 0
 	async function handle() {
-		if (!files.files || files.files.length === 0) {
-			errorToast('select some HEIC images first!');
-			return;
+		if(!files.files || files.files.length === 0)
+		{
+			errorToast("select some HEIC images first!")
+			return
 		}
 		const zip = new JSZip();
-		current = 0;
-		max = files.files.length;
-		let worth = false;
-		let awaitable: any[] = [];
-		let batch = 0;
+		current = 0
+		max = files.files.length
+		let worth = false
 		for (const file of files.files ?? []) {
-			batch++;
-			current++;
-			awaitable.push(processFile(zip, file));
-			if (batch == 5) {
-				infoToast(`processing ${current} / ${max}`);
-				console.log(`processing ${batch} items`)
-				const settled = await Promise.allSettled(awaitable);
-				batch = 0;
-				worth = worth || settled.find((i) => i.status === 'fulfilled') != undefined;
-				awaitable = []
+			current ++
+			infoToast(`processing ${current}/${max} - ${file.name}`)
+			try {
+				const jpeg = await heic({
+					blob: file,
+					type: 'image/jpeg',
+					quality: quality / 100
+				});
+				zip.file(file.name.replaceAll('.heic', '.jpg'), jpeg);
+				worth = true
+			} catch (error: any) {
+				console.log(error)
+				errorToast(`failed converting ${file.name}: ` + error, true, 1000);
 			}
 		}
-		if (!worth) {
-			return;
+		if(!worth)
+		{
+			return
 		}
-		infoToast('generating zip');
+		infoToast("generating zip")
 		const res = await zip.generateAsync({ type: 'blob' });
 		saveBlob(res, 'images.zip');
-		current = 0;
+		current = 0
 	}
 </script>
 
@@ -78,10 +65,10 @@
 		<input type="file" bind:this={files} multiple />
 	</div>
 	<div class="m-2 flex flex-row space-x-5 justify-around">
-		<p>quality</p>
+		<p>out quality</p>
 		<input type="range" bind:value={quality} />
 		<p>{quality}</p>
 	</div>
-	<progress class="w-full" value={current} {max}> {Math.round((current / max) * 1000)}% </progress>
+	<progress class="w-full" value="{current}" max="{max}"> {Math.round(current/max * 1000)}% </progress>
 	<button class="bg-stone-600 p-3" on:click={handle}>Convert</button>
 </div>
