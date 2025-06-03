@@ -37,8 +37,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@melt-ui/svelte": "0.86.2",
 		"@sveltejs/adapter-node": "5.2.0",
-		"heic-to": "^1.1.13"
+		"heic-to": "1.1.13",
+		"jszip": "3.10.1"
 	}
 }
