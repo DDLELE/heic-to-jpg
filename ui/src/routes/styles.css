@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	font-family: 'JetBrains Mono', monospace;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 17px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.lf:nth-last-child(2) {
+	display: block;
+}
