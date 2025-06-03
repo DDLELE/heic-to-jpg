@@ -52,7 +52,7 @@
 			batch++;
 			current++;
 			awaitable.push(processFile(zip, file));
-			if (batch == 5) {
+			if (batch == 5 || current > max - 5) {
 				infoToast(`processing ${current} / ${max}`);
 				console.log(`processing ${batch} items`)
 				const settled = await Promise.allSettled(awaitable);
